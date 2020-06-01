@@ -1,1 +1,33 @@
 # This draws biosynthetic clusters using the python turtle package
+
+import turtle
+# from tkinter import *
+
+turtle.hideturtle()
+turtle.speed(2)
+turtle.pen(fillcolor="red", pencolor="black", pensize=2)
+turtle.begin_fill()
+turtle.left(30)
+turtle.forward(200)
+a = turtle.xcor()
+turtle.left(120)
+turtle.forward(200)
+turtle.left(120)
+turtle.forward(50)
+turtle.right(90)
+turtle.forward(300)
+b = turtle.xcor()
+turtle.left(90)
+turtle.forward(100)
+turtle.left(90)
+turtle.forward(300)
+turtle.right(90)
+turtle.forward(50)
+turtle.end_fill()
+turtle.penup()
+turtle.goto((a+b)/2, -100)
+turtle.write("rmeB", True, align="center", font=("Arial", 40, 'italic'))
+turtle.done()
+print(a,b)
+# ts = turtle.getscreen()
+# ts.getcanvas().postscript(file="test.eps")
