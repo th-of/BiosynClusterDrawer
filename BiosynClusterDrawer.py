@@ -9,7 +9,7 @@ import numpy as np
 
 # Example input:
 # [offset, ["label", start, stop], ["label2", start, stop], ..., offset]
-gak = [-50, ["gakA", 4231, 4335], ["gakB", 4422, 4526], ["GakC", 4561, 4659], ["gakI", 4881, 5333]]
+gak = [-50, ["gakA", 4231, 4335], ["gakB", 4422, 4526], ["GakC", 4561, 4659], ["gakI", 5333, 4881]]
 
 orfs = []
 
@@ -29,14 +29,14 @@ for i in gak:
 valsarray = np.asarray(vals)
 valsarray[0] = valsarray[1]+valsarray[0]
 valsarray = valsarray-valsarray[0]
-clusterlength = max(valsarray)+50
+clusterlength = max(valsarray)+150
 
 offset = -50
 # hide turtle and set draw speed
 
 
-turtle.setup(width=1920, height=1080, startx=0, starty=0)
-turtle.screensize(1920, 1080)
+turtle.setup(width=3000, height=1080, startx=0, starty=0)
+turtle.screensize(3000, 1080)
 turtle.hideturtle()
 turtle.speed(10)
 
@@ -58,26 +58,50 @@ turtle.right(180)
 turtle.forward(clusterlength+offset)
 turtle.right(90)
 turtle.pendown()
-turtle.forward(50)
-turtle.right(90)
-turtle.forward((float(orfs[0][2]) - float(orfs[0][1]) - math.tan(math.radians(30)) * 100))
-turtle.left(90)
-turtle.forward(50)
-turtle.right(150)
-turtle.forward(115.47)
-x,y = turtle.xcor(),turtle.ycor()
-turtle.right(60)
-turtle.forward(115.47)
-turtle.right(150)
-turtle.forward(50)
-turtle.left(90)
-turtle.forward((float(orfs[0][2]) - float(orfs[0][1]) - math.tan(math.radians(30)) * 100))
-turtle.right(90)
-turtle.forward(50)
-turtle.penup()
-turtle.goto(x+(float(orfs[1][1]) - float(orfs[0][2])),y)
-turtle.pendown()
-turtle.forward(100)
+a = 0
+for n in orfs:
+    if n[1] < n[2]:
+        turtle.forward(50)
+        turtle.right(90)
+        turtle.forward((float(n[2]) - float(n[1]) - math.tan(math.radians(30)) * 100))
+        turtle.left(90)
+        turtle.forward(50)
+        turtle.right(150)
+        turtle.forward(115.47)
+        x,y = turtle.xcor(),turtle.ycor()
+        print(x,y)
+        turtle.right(60)
+        turtle.forward(115.47)
+        turtle.right(150)
+        turtle.forward(50)
+        turtle.left(90)
+        turtle.forward((float(n[2]) - float(n[1]) - math.tan(math.radians(30)) * 100))
+        turtle.right(90)
+        turtle.forward(50)
+        turtle.penup()
+        if a < len(orfs)-1:
+            turtle.goto(x+(min(np.asarray(orfs[a+1][1:3])) - max(np.asarray(orfs[a][1:3]))),y)
+        a += 1
+        turtle.pendown()
+    else:
+        turtle.right(30)
+        turtle.forward(115.47)
+        turtle.right(150)
+        turtle.forward(50)
+        turtle.right(90)
+        turtle.forward((float(n[2]) - float(n[1]) - math.tan(math.radians(30)) * 100))
+        turtle.left(90)
+        turtle.forward(100)
+        turtle.left(90)
+        turtle.forward((float(n[2]) - float(n[1]) - math.tan(math.radians(30)) * 100))
+        turtle.right(90)
+        turtle.forward(50)
+        turtle.right(150)
+        turtle.forward(115.47)
+        if a < len(orfs)-1:
+            turtle.goto(x+(min(np.asarray(orfs[a+1][1:3])) - max(np.asarray(orfs[a][1:3]))),y)
+        a += 1
+   # turtle.forward(50)
 turtle.done()
 
 # arrow
