@@ -29,7 +29,7 @@ for i in gak:
 valsarray = np.asarray(vals)
 valsarray[0] = valsarray[1]+valsarray[0]
 valsarray = valsarray-valsarray[0]
-clusterlength = max(valsarray)+150
+clusterlength = max(valsarray)+50
 
 offset = -50
 # hide turtle and set draw speed
@@ -89,11 +89,11 @@ for n in orfs:
         turtle.right(150)
         turtle.forward(50)
         turtle.right(90)
-        turtle.forward((float(n[2]) - float(n[1]) - math.tan(math.radians(30)) * 100))
+        turtle.forward(-(float(n[1]) - float(n[2]) - math.tan(math.radians(30)) * 100))
         turtle.left(90)
         turtle.forward(100)
         turtle.left(90)
-        turtle.forward((float(n[2]) - float(n[1]) - math.tan(math.radians(30)) * 100))
+        turtle.forward(-(float(n[1]) - float(n[2]) - math.tan(math.radians(30)) * 100))
         turtle.right(90)
         turtle.forward(50)
         turtle.right(150)
