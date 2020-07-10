@@ -19,3 +19,5 @@ This tool takes a list of open reading frames (ORFs) and draws the gene cluster 
 gak = [-50, ["gakA", 4231, 4335, "blue", "P"], ["gakB", 4422, 4526, "blue"], ["gakC", 4561, 4659, "blue", "T"],  ["gakI", 5333, 4881, "red", "T"], ["cro", 5517, 5290, "grey", "P"], ["gakT", 5600, 7339, "green", "P", "T"]]
 
 ```
+Scale factor must be set manually (set to 0.4 above).
+Uncomment the last two lines of the code to save the image as an eps. 
